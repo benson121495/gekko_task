@@ -7,6 +7,6 @@ export function formula(type, value)
     }else {
         return (value - 32) / 1.8;
     }
-
+// do the different calculation
 }
 
