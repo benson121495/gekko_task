@@ -24,10 +24,10 @@ function App() {
 
   return (
     <div className="App">
-      <div>Convert temperature celsius to fahrenhei</div>
+      <div class ="HeaderFont">Convert temperature celsius to fahrenhei</div>
       <header className="Convert temperature celsius to fahrenhei">
         <form onSubmit={handleSubmit}>
-          <div>
+          <div class="selectBoxFrame">
             <select onChange={onChange} className="form-select">
               <option defaultValue disabled>
                 Select Convert Type
@@ -36,14 +36,14 @@ function App() {
               <option value="fahrenhei">fahrenhei</option>
             </select>
           </div>
-          <div>
+          <div class="inputFrame">
             <input pattern="[0-9]*" name="value" onChange={handleChange} />
           </div>
           <div>
-            <button type="submit">Convert</button>
+            <button  class="submitFrame" type="submit">Convert</button>
           </div>
         </form>
-        <div> degree {selectUnit} is equal to {inputResult} degree .</div>
+        <div> degree {selectUnit} is equal to {inputResult} {selectUnit === "celsius" ? "fahrenhei" : "celsius"} degree .</div>
         
       </header>
     </div>
