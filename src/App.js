@@ -1,25 +1,56 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from "react";
+import { formula } from './function/cal';
 
 function App() {
+  const [inputResult, setInputResult] = useState("");
+  const [value, setValue] = useState("");
+
+  const handleChange = (event) => {
+    //  Get input value from "event"
+    setValue(event.target.value);
+  };
+  const [selectUnit, setSelectUnit] = useState("");
+  const onChange = (event) => {
+    const unit = event.target.value;
+    setSelectUnit(unit);
+  };
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    setInputResult(formula(selectUnit, value));
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <div>Convert temperature celsius to fahrenhei</div>
+      <header className="Convert temperature celsius to fahrenhei">
+        <form onSubmit={handleSubmit}>
+          <div>
+            <select onChange={onChange} className="form-select">
+              <option defaultValue disabled>
+                Select Convert Type
+              </option>
+              <option value="celsius">celsius</option>
+              <option value="fahrenhei">fahrenhei</option>
+            </select>
+          </div>
+          <div>
+            <input pattern="[0-9]*" name="value" onChange={handleChange} />
+          </div>
+          <div>
+            <button type="submit">Convert</button>
+          </div>
+        </form>
+        <div> degree {selectUnit} is equal to {inputResult} degree .</div>
+        
       </header>
     </div>
   );
 }
+
+
+
 
 export default App;
