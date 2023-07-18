@@ -1,7 +1,7 @@
 export function formula(type, value)
 {
    
-    if (type =="celsius"){
+    if (type === "celsius"){
         return (value * 1.8) + 32;
        
     }else {
